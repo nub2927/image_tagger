@@ -7,4 +7,4 @@ button_width=25
 deep_booru_limit=148
 tags_path='models/tags-general.txt'
 model_path='models/model-resnet_custom_v3.h5'
-deep_booru_threshold=0.33
+deep_booru_threshold=0.5
