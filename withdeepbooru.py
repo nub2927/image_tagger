@@ -504,7 +504,7 @@ for tag in quick_access_tag_list:
     quick_access_frame.add_btn((tag, True))
 
 pic_subframe.set_current_tag_frame(current_tag_frame)
-pic_subframe.load_folder()
+#pic_subframe.load_folder()
 
 load_folder_btn = Button(master=controlframe, text='load folder',command=pic_subframe.load_folder)
 load_folder_btn.grid(column=0, row=0, padx=5, pady=5)
