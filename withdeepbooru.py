@@ -8,7 +8,6 @@ import cv2
 from tkinter import Frame, Label, Tk, Button, filedialog, Entry, OptionMenu, END, StringVar, Checkbutton
 import tkinter as tk
 from glob import glob
-import keyboard
 import os
 import toml
 import pickle
@@ -347,8 +346,7 @@ class PicFrame:
         self.deepbooru = Classifier(tags_path=tags_path, model_path=model_path)
 
     def load_folder(self):
-        # folder_path = filedialog.askdirectory()
-        folder_path = r'C:\bravo\test'
+        folder_path = filedialog.askdirectory()
         if folder_path == '':
             return
         if folder_path is None:
@@ -508,7 +506,7 @@ for tag in quick_access_tag_list:
 pic_subframe.set_current_tag_frame(current_tag_frame)
 pic_subframe.load_folder()
 
-load_folder_btn = Button(master=controlframe, text='load folder')
+load_folder_btn = Button(master=controlframe, text='load folder',command=pic_subframe.load_folder)
 load_folder_btn.grid(column=0, row=0, padx=5, pady=5)
 
 save_btn = Button(master=controlframe, text='save all (this will override all text files)',
