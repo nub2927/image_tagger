@@ -1,0 +1,11 @@
+# tags that will automatically be applied to each image
+#default_tags=['kojima_kirie','brown_hair','brown_eyes','1girl','short_hair']
+default_tags=['1girl',]
+# tags that will fill the quick acess panel
+quick_access_tags=['full_body','upper_body','close-up','nude']
+button_row_limit=37
+button_width=25
+deep_booru_limit=148
+tags_path='models/tags-general.txt'
+model_path='models/model-resnet_custom_v3.h5'
+deep_booru_threshold=0.33
