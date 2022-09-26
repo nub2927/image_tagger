@@ -17,7 +17,7 @@ search_frame = None
 right_frame_col = 0
 window = None
 typing = False
-
+info_lbl=None
 
 def create_connection(db_file):
     """ create a database connection to the SQLite database
@@ -325,6 +325,10 @@ class PicFrame:
         self.current_tag_frame = current_tag_frame
 
     def load(self,booru_reload=False):
+        global info_lbl
+        message=f'pic {self.index+1} out of {len(self.pic_list)}'
+        info_lbl.configure(text=message)
+
         current_pic = self.pic_list[self.index]
         self.current_tag_frame.clearbtn()
         tag_list = current_pic.get_tags()
@@ -399,6 +403,9 @@ controlframe.grid(column=0, row=0, padx=5, pady=5)
 
 pic_frame = Frame(master=middle_frame)
 pic_frame.grid(column=0, row=1, padx=5, pady=5)
+
+info_lbl=Label(master=pic_frame,text='/')
+info_lbl.grid(column=1, row=0, padx=5, pady=5)
 
 # pic_lbl = Label(master=pic_frame)
 # pic_lbl.grid(column=0, row=0, padx=5, pady=5)
