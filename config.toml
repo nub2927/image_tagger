@@ -1,5 +1,5 @@
 # tags that will automatically be applied to each image
-default_tags=['1girl',]
+default_tags=[]
 # tags that will fill the quick acess panel
 quick_access_tags=['full_body','upper_body','close-up']
 button_row_limit=37
