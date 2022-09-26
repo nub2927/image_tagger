@@ -19,6 +19,7 @@ right_frame_col = 0
 window = None
 typing = False
 threshold_entry = None
+info_lbl=None
 
 
 def create_connection(db_file):
@@ -375,6 +376,9 @@ class PicFrame:
 
     def load(self,reload_inference=False):
         global threshold
+        message = f'pic {self.index + 1} out of {len(self.pic_list)}'
+        info_lbl.configure(text=message)
+
         current_pic = self.pic_list[self.index]
         self.current_tag_frame.clearbtn()
         tag_list = current_pic.get_tags()
@@ -481,6 +485,9 @@ controlframe.grid(column=0, row=0, padx=5, pady=5)
 pic_frame = Frame(master=middle_frame)
 pic_frame.grid(column=0, row=1, padx=5, pady=5)
 
+info_lbl=Label(master=pic_frame,text='/')
+info_lbl.grid(column=1, row=0, padx=5, pady=5)
+
 # pic_lbl = Label(master=pic_frame)
 # pic_lbl.grid(column=0, row=0, padx=5, pady=5)
 pic_subframe = PicFrame(pic_frame, window, [])
@@ -489,7 +496,7 @@ sub_frame.grid(column=0, row=1, padx=5, pady=5)
 right_frame = Frame(master=window)
 right_frame.grid(column=2, row=0, padx=5, pady=5, sticky='NW')
 current_tag_frame = TagsFrame(right_frame, indicator=True, description='current tags', highlightbackground='blue',
-                              callback_func=pic_subframe.set_tag_call_back, col=1)
+                              callback_func=pic_subframe.set_tag_call_back, col=2)
 right_frame_col += 1
 search_frame = TagSearchFrame(sub_frame, call_back_func=current_tag_frame.add_btn)
 
@@ -497,7 +504,7 @@ search_frame = TagSearchFrame(sub_frame, call_back_func=current_tag_frame.add_bt
 
 
 quick_access_frame = TagsFrame(right_frame, indicator=True, description='quick access tags',
-                               callback_func=current_tag_frame.add_btn, col=0)
+                               callback_func=current_tag_frame.add_btn, col=1)
 right_frame_col += 1
 quick_access_tag_list = toml.load('config.toml')['quick_access_tags']
 for tag in quick_access_tag_list:
