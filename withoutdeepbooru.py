@@ -8,7 +8,6 @@ import cv2
 from tkinter import Frame, Label, Tk, Button, filedialog, Entry, OptionMenu, END, StringVar, Checkbutton
 import tkinter as tk
 from glob import glob
-import keyboard
 import os
 import toml
 import pickle
@@ -301,8 +300,7 @@ class PicFrame:
         self.folder_path = ''
 
     def load_folder(self):
-        # folder_path = filedialog.askdirectory()
-        folder_path = r'C:\bravo\test'
+        folder_path = filedialog.askdirectory()
         if folder_path == '':
             return
         if folder_path is None:
@@ -423,9 +421,9 @@ for tag in quick_access_tag_list:
     quick_access_frame.add_btn((tag, True))
 
 pic_subframe.set_current_tag_frame(current_tag_frame)
-pic_subframe.load_folder()
+#pic_subframe.load_folder()
 
-load_folder_btn = Button(master=controlframe, text='load folder')
+load_folder_btn = Button(master=controlframe, text='load folder',command=pic_subframe.load_folder)
 load_folder_btn.grid(column=0, row=0, padx=5, pady=5)
 load_sug_btn = Button(master=controlframe, text='load suggestings')
 load_sug_btn.grid(column=1, row=0, padx=5, pady=5)
